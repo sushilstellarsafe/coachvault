@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoachVault — Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Remix Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="login-page no-select">
+
+  <!-- Ambient blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Login Card -->
+  <div class="login-card">
+
+    <!-- Logo -->
+    <div class="login-logo">
+      <div class="logo-icon">📚</div>
+      <div class="logo-text">Coach<span>Vault</span></div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="login-heading">Welcome back</h1>
+    <p class="login-sub">Sign in to access your study materials</p>
+
+    <!-- Error Banner -->
+    <div class="form-error-banner" id="errorBanner">
+      <i class="ri-error-warning-line"></i>
+      Invalid email or password. Please try again.
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" novalidate>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <div class="input-wrapper">
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
+        </div>
+        <span class="error-msg" id="emailErr">Please enter a valid email.</span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-wrapper">
+          <input
+            class="form-input"
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            style="padding-right: 44px;"
+            autocomplete="current-password"
+          />
+          <span class="input-icon" id="togglePwd" title="Show/hide password">
+            <i class="ri-eye-off-line"></i>
+          </span>
+        </div>
+        <span class="error-msg" id="pwdErr">Password must be at least 6 characters.</span>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button class="btn btn-primary" type="submit" id="loginBtn">
+        <span class="spinner" id="btnSpinner"></span>
+        <span id="btnLabel">Sign In</span>
+        <i class="ri-arrow-right-line" id="btnArrow"></i>
+      </button>
+
+    </form>
+
+    <!-- Demo hint -->
+    <p style="text-align:center; color:var(--text-muted); font-size:0.78rem; margin-top:20px; line-height:1.6;">
+      Demo credentials<br>
+      <span style="color:var(--accent);">student@coachvault.com</span> / <span style="color:var(--accent);">pass123</span>
+    </p>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

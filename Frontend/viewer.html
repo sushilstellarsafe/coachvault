@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoachVault — Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="viewer-page no-select">
+
+  <!-- ── Loading Screen ── -->
+  <div class="loader-screen" id="loaderScreen">
+    <div class="loader-ring"></div>
+    <p class="loader-text">Loading document…</p>
+    <div class="loader-progress">
+      <div class="loader-bar" id="loaderBar"></div>
+    </div>
+  </div>
+
+  <!-- ── Blur overlay (tab switch) ── -->
+  <div class="blur-overlay" id="blurOverlay">
+    <div class="blur-icon"><i class="ri-eye-off-line"></i></div>
+    <p class="blur-title">Content Hidden</p>
+    <p class="blur-sub">Return to this tab to continue viewing your document.</p>
+  </div>
+
+  <!-- ── Viewer Nav ── -->
+  <nav class="viewer-nav">
+    <a class="back-btn" href="dashboard.html" title="Back to Dashboard">
+      <i class="ri-arrow-left-s-line"></i>
+    </a>
+    <div class="viewer-file-info">
+      <div class="viewer-file-name" id="viewerFileName">Document</div>
+      <div class="viewer-file-sub" id="viewerFileSub">CoachVault — Secure</div>
+    </div>
+    <div class="secure-badge">
+      <i class="ri-shield-check-fill"></i>
+      <span>Protected</span>
+    </div>
+  </nav>
+
+  <!-- ── PDF Body ── -->
+  <div class="viewer-body">
+
+    <!-- PDF iframe -->
+    <div class="pdf-frame-wrap">
+      <iframe
+        id="pdfFrame"
+        class="pdf-frame"
+        title="PDF Document"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Watermark layer (tiled) -->
+    <div class="watermark-layer" id="watermarkLayer" aria-hidden="true">
+      <!-- Tiles injected by JS -->
+    </div>
+
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

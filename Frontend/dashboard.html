@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoachVault — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="dashboard-page no-select">
+
+  <!-- ── Top Navigation ── -->
+  <nav class="topnav">
+    <a class="nav-logo" href="index.html">
+      <div class="logo-icon">📚</div>
+      <div class="logo-text">Coach<span>Vault</span></div>
+    </a>
+
+    <div class="nav-actions">
+      <div class="avatar" id="userAvatar" title="Profile">S</div>
+      <button class="logout-btn" id="logoutBtn">
+        <i class="ri-logout-box-r-line"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <div class="dash-hero">
+    <p class="dash-greeting">Good day, Student 👋</p>
+    <h1 class="dash-title">Your <span>Study</span> Hub</h1>
+    <div class="dash-stats">
+      <div class="stat-chip"><i class="ri-file-pdf-line"></i> <span id="totalCount">6</span> Notes</div>
+      <div class="stat-chip"><i class="ri-shield-check-line"></i> Secure Access</div>
+    </div>
+  </div>
+
+
+<div id="uploadBox" class="upload-box">
+  <label class="upload-label">
+    <input type="file" id="fileInput" hidden>
+    <span class="upload-icon">📤</span>
+    <span class="upload-text">Choose PDF</span>
+  </label>
+
+  <button class="upload-btn" onclick="uploadNote()">
+    Upload Notes
+  </button>
+</div>
+
+  <!-- ── Main Section ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-title">All Notes</span>
+      <span class="section-badge" id="visibleBadge">6 files</span>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <i class="ri-search-line"></i>
+      <input type="text" id="searchInput" placeholder="Search notes…" />
+    </div>
+
+    <!-- Category chips -->
+    <div class="filter-chips" id="filterChips">
+      <div class="chip active" data-filter="all">All</div>
+      <div class="chip" data-filter="Mathematics">Maths</div>
+      <div class="chip" data-filter="Physics">Physics</div>
+      <div class="chip" data-filter="Chemistry">Chemistry</div>
+      <div class="chip" data-filter="Biology">Biology</div>
+      <div class="chip" data-filter="English">English</div>
+    </div>
+
+    <!-- Notes Grid -->
+    <div class="notes-grid" id="notesGrid">
+      <!-- Populated by JS -->
+    </div>
+
+  </section>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
