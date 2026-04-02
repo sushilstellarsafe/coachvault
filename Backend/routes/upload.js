@@ -34,44 +34,34 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const bucket = require("../firebase");
+const Note = require("../models/Note");
 
 const upload = multer({ storage: multer.memoryStorage() });
 
 router.post("/", upload.single("file"), async (req, res) => {
   try {
-    const file = req.file;
+    const fileName = Date.now() + ".pdf";
+    const file = bucket.file(fileName);
 
-    const fileName = Date.now() + "-" + file.originalname;
-
-    const fileUpload = bucket.file("pdfs/" + fileName);
-
-    const stream = fileUpload.createWriteStream({
+    await file.save(req.file.buffer, {
       metadata: {
-        contentType: file.mimetype,
-      },
+        contentType: req.file.mimetype
+      }
     });
 
-    stream.on("error", (err) => {
-      res.status(500).json({ error: err });
+    const fileUrl = `https://storage.googleapis.com/${bucket.name}/${file.name}`;
+
+    // MongoDB में save
+    const note = await Note.create({
+      title: req.file.originalname,
+      fileUrl
     });
 
-    stream.on("finish", async () => {
-      // Public URL generate
-      await fileUpload.makePublic();
+    res.json(note);
 
-      const fileUrl = `https://storage.googleapis.com/${bucket.name}/pdfs/${fileName}`;
-
-      // MongoDB me save karo
-      // Example:
-      // await Note.create({ title: req.body.title, fileUrl });
-
-      res.json({ url: fileUrl });
-    });
-
-    stream.end(file.buffer);
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "Upload failed" });
   }
 });
 

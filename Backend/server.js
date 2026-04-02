@@ -14,6 +14,7 @@ app.use("/upload", require("./routes/upload"));
 app.use("/uploads", express.static("uploads"));
 app.use("/notes", require("./routes/notes"));
 
+
 // DB Connect
 mongoose.connect("mongodb+srv://myuser:Sushil@cluster1.jvuxleh.mongodb.net/coachingApp")
   .then(() => console.log("DB Connected"))
